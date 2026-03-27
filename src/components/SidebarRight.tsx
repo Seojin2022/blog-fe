@@ -3,6 +3,7 @@ import { apiUrl } from '../lib/api';
 import { useLanguage } from '../context/LanguageContext';
 
 const DEFAULT_CONTACT_EMAIL = 'water4072@gmail.com';
+const DEFAULT_PORTFOLIO_KO = 'https://www.notion.so/2f65871083cf80568852e64a276473c4';
 
 const SidebarRight = () => {
   const { settings } = useLanguage();
@@ -18,7 +19,7 @@ const SidebarRight = () => {
   }, [showEmailBubble]);
 
   const contactEmail = settings.contact_email || DEFAULT_CONTACT_EMAIL;
-  const portfolioKo = settings.portfolio_ko;
+  const portfolioKo = settings.portfolio_ko || DEFAULT_PORTFOLIO_KO;
   const portfolioEn = settings.portfolio_en;
 
   return (

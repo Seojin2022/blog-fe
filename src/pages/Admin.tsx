@@ -91,8 +91,20 @@ const Admin = () => {
         headers: { 'x-admin-password': password },
         body: formData
       });
-      const data = await res.json();
-      return data.url;
+      // 백엔드/Cloudflare 연동에 따라 응답이 JSON이 아닐 수 있어 안전하게 처리합니다.
+      const text = await res.text();
+      if (!res.ok) {
+        throw new Error(text || `Upload failed: ${res.status}`);
+      }
+      if (!text) return null;
+      try {
+        const data = JSON.parse(text);
+        // 백엔드가 url 대신 다른 키를 줄 가능성도 있어 몇 가지를 허용합니다.
+        return data?.url ?? data?.fileUrl ?? data?.link ?? null;
+      } catch {
+        // JSON이 아니고 URL 문자열만 내려오는 경우
+        return text;
+      }
     } catch (err) {
       console.error('Upload failed', err);
       return null;
@@ -608,7 +620,7 @@ const Admin = () => {
                   <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-400">Portfolio (KO)</h3>
                   <div className="flex items-center gap-4">
                     {siteSettings.portfolio_ko && (
-                      <a href={siteSettings.portfolio_ko} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 파일</a>
+                      <a href={apiUrl(siteSettings.portfolio_ko)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 파일</a>
                     )}
                     <label className="flex items-center gap-2 px-4 py-2 bg-zinc-100 rounded-xl cursor-pointer hover:bg-zinc-200 transition-all text-xs font-bold text-zinc-700">
                       <Upload className="w-4 h-4" />
