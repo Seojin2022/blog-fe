@@ -13,6 +13,6 @@ export function formatDate(value: unknown, pattern = 'yyyy.MM.dd'): string {
 }
 
 /** Post/RecentPost에서 날짜 필드 읽기 (created_at 또는 createdAt) */
-export function getCreatedAt(obj: Record<string, unknown>): unknown {
-  return obj['created_at'] ?? obj['createdAt'];
+export function getCreatedAt(obj: { created_at?: unknown; createdAt?: unknown } | null | undefined): unknown {
+  return obj?.created_at ?? obj?.createdAt;
 }

@@ -618,9 +618,23 @@ const Admin = () => {
               <div className="pt-8 border-t border-zinc-100 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-400">Portfolio (KO)</h3>
-                  <div className="flex items-center gap-4">
+                  <div className="space-y-3">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-zinc-900">Portfolio URL (KO)</label>
+                      <input
+                        type="url"
+                        placeholder="https://..."
+                        value={siteSettings.portfolio_ko || ''}
+                        onChange={e => setSiteSettings({ ...siteSettings, portfolio_ko: e.target.value })}
+                        className="w-full px-4 py-3 bg-zinc-50 border border-zinc-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900/5 focus:border-zinc-900"
+                      />
+                      <p className="text-[11px] text-zinc-500">
+                        파일 업로드 대신 URL로 설정하면, 사용자 화면에서 해당 주소로 이동합니다.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
                     {siteSettings.portfolio_ko && (
-                      <a href={apiUrl(siteSettings.portfolio_ko)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 파일</a>
+                      <a href={apiUrl(siteSettings.portfolio_ko)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 링크</a>
                     )}
                     <label className="flex items-center gap-2 px-4 py-2 bg-zinc-100 rounded-xl cursor-pointer hover:bg-zinc-200 transition-all text-xs font-bold text-zinc-700">
                       <Upload className="w-4 h-4" />
@@ -638,13 +652,28 @@ const Admin = () => {
                         }}
                       />
                     </label>
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-400">Portfolio (EN)</h3>
-                  <div className="flex items-center gap-4">
+                  <div className="space-y-3">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-zinc-900">Portfolio URL (EN)</label>
+                      <input
+                        type="url"
+                        placeholder="https://..."
+                        value={siteSettings.portfolio_en || ''}
+                        onChange={e => setSiteSettings({ ...siteSettings, portfolio_en: e.target.value })}
+                        className="w-full px-4 py-3 bg-zinc-50 border border-zinc-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900/5 focus:border-zinc-900"
+                      />
+                      <p className="text-[11px] text-zinc-500">
+                        파일 업로드 대신 URL로 설정하면, 사용자 화면에서 해당 주소로 이동합니다.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
                     {siteSettings.portfolio_en && (
-                      <a href={apiUrl(siteSettings.portfolio_en)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 파일</a>
+                      <a href={apiUrl(siteSettings.portfolio_en)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 링크</a>
                     )}
                     <label className="flex items-center gap-2 px-4 py-2 bg-zinc-100 rounded-xl cursor-pointer hover:bg-zinc-200 transition-all text-xs font-bold text-zinc-700">
                       <Upload className="w-4 h-4" />
@@ -662,6 +691,7 @@ const Admin = () => {
                         }}
                       />
                     </label>
+                    </div>
                   </div>
                 </div>
               </div>

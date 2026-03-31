@@ -27,7 +27,14 @@ const SidebarRight = () => {
       <div className="sticky top-24 space-y-12">
         <div className="space-y-6 px-2">
           <div>
-            <a href="https://github.com/Seojin2022" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-zinc-900 hover:text-blue-600 transition-colors">GITHUB</a>
+            <a
+              href="https://github.com/Seojin2022"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold text-zinc-900 hover:text-blue-600 transition-colors"
+            >
+              GITHUB
+            </a>
           </div>
           <div ref={emailRef} className="relative inline-block">
             <button
@@ -55,14 +62,14 @@ const SidebarRight = () => {
           </div>
           <div>
             {portfolioKo ? (
-              <a href={apiUrl(portfolioKo)} target="_blank" rel="noopener noreferrer" download className="text-sm font-bold text-zinc-900 hover:text-blue-600 transition-colors block">PORTFOLIO (KO)</a>
+              <a href={apiUrl(portfolioKo)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-zinc-900 hover:text-blue-600 transition-colors block">PORTFOLIO (KO)</a>
             ) : (
               <span className="text-sm font-bold text-zinc-300 cursor-default">PORTFOLIO (KO)</span>
             )}
           </div>
           <div>
             {portfolioEn ? (
-              <a href={apiUrl(portfolioEn)} target="_blank" rel="noopener noreferrer" download className="text-sm font-bold text-zinc-900 hover:text-blue-600 transition-colors block">PORTFOLIO (EN)</a>
+              <a href={apiUrl(portfolioEn)} target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-zinc-900 hover:text-blue-600 transition-colors block">PORTFOLIO (EN)</a>
             ) : (
               <span className="text-sm font-bold text-zinc-300 cursor-default">PORTFOLIO (EN)</span>
             )}
