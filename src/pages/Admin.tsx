@@ -616,25 +616,16 @@ const Admin = () => {
                       </p>
                     </div>
                     <div className="flex items-center gap-4">
-                    {siteSettings.portfolio_ko && (
-                      <a href={apiUrl(siteSettings.portfolio_ko)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 링크</a>
-                    )}
-                    <label className="flex items-center gap-2 px-4 py-2 bg-zinc-100 rounded-xl cursor-pointer hover:bg-zinc-200 transition-all text-xs font-bold text-zinc-700">
-                      <Upload className="w-4 h-4" />
-                      {siteSettings.portfolio_ko ? '변경' : '업로드'}
-                      <input
-                        type="file"
-                        className="hidden"
-                        accept=".pdf,.doc,.docx"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (file) {
-                            const url = await handleFileUpload(file);
-                            if (url) setSiteSettings({ ...siteSettings, portfolio_ko: url });
-                          }
-                        }}
-                      />
-                    </label>
+                      {siteSettings.portfolio_ko && (
+                        <a
+                          href={apiUrl(siteSettings.portfolio_ko)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-zinc-500 underline truncate max-w-[180px]"
+                        >
+                          현재 링크
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -655,25 +646,16 @@ const Admin = () => {
                       </p>
                     </div>
                     <div className="flex items-center gap-4">
-                    {siteSettings.portfolio_en && (
-                      <a href={apiUrl(siteSettings.portfolio_en)} target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-500 underline truncate max-w-[180px]">현재 링크</a>
-                    )}
-                    <label className="flex items-center gap-2 px-4 py-2 bg-zinc-100 rounded-xl cursor-pointer hover:bg-zinc-200 transition-all text-xs font-bold text-zinc-700">
-                      <Upload className="w-4 h-4" />
-                      {siteSettings.portfolio_en ? '변경' : '업로드'}
-                      <input
-                        type="file"
-                        className="hidden"
-                        accept=".pdf,.doc,.docx"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (file) {
-                            const url = await handleFileUpload(file);
-                            if (url) setSiteSettings({ ...siteSettings, portfolio_en: url });
-                          }
-                        }}
-                      />
-                    </label>
+                      {siteSettings.portfolio_en && (
+                        <a
+                          href={apiUrl(siteSettings.portfolio_en)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-zinc-500 underline truncate max-w-[180px]"
+                        >
+                          현재 링크
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

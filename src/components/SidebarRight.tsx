@@ -7,6 +7,9 @@ const DEFAULT_PORTFOLIO_KO = 'https://www.notion.so/2f65871083cf80568852e64a2764
 const DEFAULT_PORTFOLIO_EN =
   'https://www.notion.so/Hello-I-m-Lee-Seo-jin-a-full-stack-developer-2645871083cf82ffaa92016a7fb596d3';
 
+const isHttpUrl = (value: unknown): value is string =>
+  typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'));
+
 const SidebarRight = () => {
   const { settings } = useLanguage();
   const [showEmailBubble, setShowEmailBubble] = useState(false);
@@ -21,8 +24,8 @@ const SidebarRight = () => {
   }, [showEmailBubble]);
 
   const contactEmail = settings.contact_email || DEFAULT_CONTACT_EMAIL;
-  const portfolioKo = settings.portfolio_ko || DEFAULT_PORTFOLIO_KO;
-  const portfolioEn = settings.portfolio_en || DEFAULT_PORTFOLIO_EN;
+  const portfolioKo = isHttpUrl(settings.portfolio_ko) ? settings.portfolio_ko : DEFAULT_PORTFOLIO_KO;
+  const portfolioEn = isHttpUrl(settings.portfolio_en) ? settings.portfolio_en : DEFAULT_PORTFOLIO_EN;
 
   return (
     <aside className="w-full md:w-64 flex-shrink-0">
