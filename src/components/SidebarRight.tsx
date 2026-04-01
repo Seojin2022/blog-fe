@@ -4,6 +4,8 @@ import { useLanguage } from '../context/LanguageContext';
 
 const DEFAULT_CONTACT_EMAIL = 'water4072@gmail.com';
 const DEFAULT_PORTFOLIO_KO = 'https://www.notion.so/2f65871083cf80568852e64a276473c4';
+const DEFAULT_PORTFOLIO_EN =
+  'https://www.notion.so/Hello-I-m-Lee-Seo-jin-a-full-stack-developer-2645871083cf82ffaa92016a7fb596d3';
 
 const SidebarRight = () => {
   const { settings } = useLanguage();
@@ -20,7 +22,7 @@ const SidebarRight = () => {
 
   const contactEmail = settings.contact_email || DEFAULT_CONTACT_EMAIL;
   const portfolioKo = settings.portfolio_ko || DEFAULT_PORTFOLIO_KO;
-  const portfolioEn = settings.portfolio_en;
+  const portfolioEn = settings.portfolio_en || DEFAULT_PORTFOLIO_EN;
 
   return (
     <aside className="w-full md:w-64 flex-shrink-0">

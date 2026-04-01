@@ -132,14 +132,12 @@ const translations: Record<Language, Record<string, string>> = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const DEFAULT_PROFILE_IMAGE = 'https://picsum.photos/seed/seojin/200/200';
-
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem('lang');
     return (saved as Language) || 'en';
   });
-  const [settings, setSettings] = useState<Record<string, string>>({ profile_image: DEFAULT_PROFILE_IMAGE });
+  const [settings, setSettings] = useState<Record<string, string>>({});
 
   const normalizeSettings = (data: unknown): Record<string, string> => {
     if (!data || typeof data !== 'object') return {};
@@ -162,9 +160,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       if (!res.ok) return;
       const data = await res.json();
       const next = normalizeSettings(data);
-      setSettings({ profile_image: DEFAULT_PROFILE_IMAGE, ...next });
+      setSettings({ ...next });
     } catch {
-      setSettings(prev => ({ profile_image: DEFAULT_PROFILE_IMAGE, ...prev }));
+      setSettings(prev => ({ ...prev }));
     }
   };
 

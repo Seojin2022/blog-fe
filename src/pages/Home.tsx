@@ -6,10 +6,13 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { apiFetch, apiUrl } from '../lib/api';
+import { apiFetch } from '../lib/api';
+
+const FIXED_PROFILE_IMAGE = 'https://cataas.com/cat?width=200&height=200&type=square';
+const FALLBACK_PROFILE_IMAGE = 'https://picsum.photos/seed/flower/200/200';
 
 const Home = () => {
-  const { t, settings } = useLanguage();
+  const { t } = useLanguage();
   const [latestPosts, setLatestPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -34,10 +37,14 @@ const Home = () => {
           
           <div className="flex items-center gap-4 mb-12">
             <img 
-              src={settings.profile_image ? apiUrl(settings.profile_image) : "https://picsum.photos/seed/seojin/200/200"} 
+              src={FIXED_PROFILE_IMAGE}
               alt="Profile" 
               className="w-12 h-12 rounded-full object-cover grayscale"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (img.src !== FALLBACK_PROFILE_IMAGE) img.src = FALLBACK_PROFILE_IMAGE;
+              }}
             />
             <span className="text-lg font-bold text-zinc-900">Seojin Lee</span>
           </div>

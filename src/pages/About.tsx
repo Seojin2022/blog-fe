@@ -3,7 +3,9 @@ import Layout from '../components/Layout';
 import { motion } from 'motion/react';
 import { Download, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { apiUrl } from '../lib/api';
+
+const FIXED_PROFILE_IMAGE = 'https://cataas.com/cat?width=800&height=800&type=square';
+const FALLBACK_PROFILE_IMAGE = 'https://picsum.photos/seed/flower/800/800';
 
 const About = () => {
   const { t, settings } = useLanguage();
@@ -24,10 +26,14 @@ const About = () => {
           <div className="flex flex-col md:flex-row gap-12 items-center mb-12">
             <div className="w-48 h-48 rounded-3xl bg-zinc-100 overflow-hidden shadow-2xl shadow-zinc-200 flex-shrink-0">
               <img 
-                src={settings.profile_image ? apiUrl(settings.profile_image) : "https://picsum.photos/seed/avatar/400/400"} 
+                src={FIXED_PROFILE_IMAGE}
                 alt="Profile" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  if (img.src !== FALLBACK_PROFILE_IMAGE) img.src = FALLBACK_PROFILE_IMAGE;
+                }}
               />
             </div>
             <div>

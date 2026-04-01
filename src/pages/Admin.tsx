@@ -570,25 +570,8 @@ const Admin = () => {
               <div className="pt-8 border-t border-zinc-100 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-400">Profile Image</h3>
-                  <div className="flex items-center gap-6">
-                    <div className="w-24 h-24 rounded-2xl bg-zinc-50 overflow-hidden border border-zinc-100">
-                      {siteSettings.profile_image ? <img src={apiUrl(siteSettings.profile_image)} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" /> : null}
-                    </div>
-                    <label className="flex flex-col items-center justify-center px-4 py-2 bg-zinc-50 border border-zinc-200 border-dashed rounded-xl cursor-pointer hover:bg-zinc-100 transition-all">
-                      <Upload className="w-5 h-5 text-zinc-400 mb-1" />
-                      <span className="text-xs font-bold text-zinc-600">{t('uploadImage')}</span>
-                      <input
-                        type="file"
-                        className="hidden"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (file) {
-                            const url = await handleFileUpload(file);
-                            if (url) setSiteSettings({ ...siteSettings, profile_image: url });
-                          }
-                        }}
-                      />
-                    </label>
+                  <div className="text-sm text-zinc-500 leading-relaxed">
+                    메인/소개 페이지 프로필 이미지는 현재 고정 이미지로 사용합니다. (업로드 경로 사용 안 함)
                   </div>
                 </div>
 
