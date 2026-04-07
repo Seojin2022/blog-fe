@@ -3,9 +3,10 @@ import { apiUrl } from '../lib/api';
 import { useLanguage } from '../context/LanguageContext';
 
 const DEFAULT_CONTACT_EMAIL = 'water4072@gmail.com';
-const DEFAULT_PORTFOLIO_KO = 'https://www.notion.so/2f65871083cf80568852e64a276473c4';
+const DEFAULT_PORTFOLIO_KO =
+  'https://helpful-barracuda-ab5.notion.site/2f65871083cf80568852e64a276473c4?pvs=74';
 const DEFAULT_PORTFOLIO_EN =
-  'https://www.notion.so/Hello-I-m-Lee-Seo-jin-a-full-stack-developer-2645871083cf82ffaa92016a7fb596d3';
+  'https://helpful-barracuda-ab5.notion.site/Hello-I-m-Lee-Seo-jin-a-full-stack-developer-2645871083cf82ffaa92016a7fb596d3';
 
 const isHttpUrl = (value: unknown): value is string =>
   typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'));
